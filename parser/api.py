@@ -16,30 +16,12 @@ def get_info():
         soup = bs4.BeautifulSoup(whole_source, 'html.parser')
         title = soup.select("#free-genre-list > li > a > div.homelist-title > span")
         time = soup.select("#free-genre-list > li > a > div.homelist-genre > span")
+        link = soup.select("#free-genre-list > li> a[href]")
         while i < len(title) - 1:
             i += 1
             arr.append({
             'title': title[i].text,
-            'time': time[i].text
+            'time': time[i].text,
+            'link': "http://11toon61.com/" + link[i]['href']
         })
     return arr
-
- 
-    
-# for i, info in enumerate(info, 2):
-#     title = info.select_one('div.homelist-title > span')
-# print(title)
-# imageURL:
-# updatedAt:
-# linkURL:
-
-    
-# print(test)
-# if True:
-#     arr.append({
-#         'id': i,
-#         'title' : a.text,
-#         'url': 'https://movie.naver.com' + a['href'],
-#         'icon': icon['src'],
-#         'range': range.text
-#     })
