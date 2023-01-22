@@ -21,7 +21,7 @@ def get_info():
             i += 1
             arr.append({
             'title': title[i].text,
-            'time': time[i].text,
+            'time': time[i].text.split(' '),
             'link': "http://11toon61.com/" + link[i]['href']
         })
     return arr
