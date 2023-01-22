@@ -31,7 +31,7 @@ def inject_result_to_readme():
         time02 = [s for s in arr if "원펀맨" in s['title']][0]['time'][len([s for s in arr if "원펀맨" in s['title']][0]['time'])-1]
         time03 = [s for s in arr if "피안도" in s['title']][0]['time'][len([s for s in arr if "피안도" in s['title']][0]['time'])-1]
         
-        updated_content = ( f'> Auto Updated Date: {timestamp}\n\n 01.{title01}, {time01[0:5]}\n 02.{title02}, {time02[0:5]} \n 03.{title03}, {time03[0:5]}  ')
+        updated_content = ( f'> Auto Updated Date: {timestamp}\n\n ```js 01.{title01}, {time01[0:5]}``` \n ```js 02.{title02}, {time02[0:5]}``` \n ```js 03.{title03}, {time03[0:5]}```  ')
         print('readme update is okay')
     with open('../Readme.md', 'w') as readme:
         readme.write(updated_content)
