@@ -1,10 +1,13 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useDebounce } from "../hooks/useDebounce";
 import data from "../mockup/data.json";
 
 const Home = () => {
   const [hide, setHide] = useState(false);
+  const [search, setSearch] = useDebounce("", 200);
+  const [title, setTitle] = useState("");
   const showData = data?.filter((v, i) => {
     return (
       v.title.includes("원피스") ||
@@ -14,6 +17,13 @@ const Home = () => {
     );
   });
 
+  useEffect(() => {
+    hide ? setTitle("감추기") : setTitle("전체보기");
+  }, [hide]);
+
+  const filteredData = data?.filter((v, i) => {
+    return v.title.toLowerCase().includes(search);
+  });
   const onClickButton = useCallback(() => {
     setHide((v) => !v);
   }, []);
@@ -26,15 +36,25 @@ const Home = () => {
       {data.length === 0 && <p>데이터가 없습니다</p>}
       <div className="main">
         <ul>
-          <div
-            className="w-full text-center text-[2rem] p-4"
-            onClick={onClickButton}
-          >
-            전체보기 *스크롤주의*
+          <div className="w-full text-center p-4">
+            <p
+              onClick={onClickButton}
+              className="text-[1.5rem] cursor-pointer hover:bg-pink-100"
+            >
+              {title}
+            </p>
+            {hide && (
+              <input
+                type="text"
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="제목을 검색하세요"
+                className="focus:outline-0 w-[300px] h-[30px] text-center"
+              />
+            )}
           </div>
-          {hide && <input />}
+
           {hide
-            ? data.map((v: any, i) => {
+            ? filteredData.map((v: any, i) => {
                 return (
                   <a href={v.link} target="_blank" className="url" key={i}>
                     <li className="content">
@@ -94,7 +114,7 @@ const Home = () => {
           flex-direction: column;
         }
         .content:hover {
-          border: 3px solid black;
+          opacity: 50%;
         }
         .link:hover {
           opacity: 50%;
