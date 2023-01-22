@@ -1,0 +1,13 @@
+1. 동적크롤링 -> 페이지 5~10?
+2. json 파일로 크롤링 데이터 저장
+ {
+    title:
+    imageURL:
+    updatedAt:
+    linkURL:
+ }
+ -  title
+3. 프론트작업
+4. 크론잡 하루4번?
+5. 디스코드봇 생성
+6. aws람다 
