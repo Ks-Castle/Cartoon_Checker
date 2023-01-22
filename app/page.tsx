@@ -1,8 +1,23 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import data from "../mockup/data.json";
 
 const Home = () => {
+  const [hide, setHide] = useState(false);
+  const showData = data?.filter((v, i) => {
+    return (
+      v.title.includes("원피스") ||
+      v.title.includes("원펀맨") ||
+      v.title.includes("피안도") ||
+      v.title.includes("켄간")
+    );
+  });
+
+  const onClickButton = useCallback(() => {
+    setHide((v) => !v);
+  }, []);
+
   return (
     <div className="wrap">
       <div className="flexBox">
@@ -11,33 +26,52 @@ const Home = () => {
       {data.length === 0 && <p>데이터가 없습니다</p>}
       <div className="main">
         <ul>
-          {data.map((v: any, i) => {
-            return (
-              <a href={v.link} target="_blank" className="url" key={i}>
-                <li className="content">
-                  <div>
-                    {i + 1}: {v.title}
-                  </div>
-                  <p>
-                    마지막 업데이트: &nbsp;
-                    <span style={{ color: `red` }}>
-                      {v.time[v.time.length - 1].substr(0, 5)}
-                    </span>
-                  </p>
-                </li>
-              </a>
-            );
-          })}
+          <div
+            className="w-full text-center text-[2rem] p-4"
+            onClick={onClickButton}
+          >
+            전체보기 *스크롤주의*
+          </div>
+          {hide && <input />}
+          {hide
+            ? data.map((v: any, i) => {
+                return (
+                  <a href={v.link} target="_blank" className="url" key={i}>
+                    <li className="content">
+                      <div>
+                        {i + 1}: {v.title}
+                      </div>
+                      <p>
+                        마지막 업데이트: &nbsp;
+                        <span style={{ color: `red` }}>
+                          {v.time[v.time.length - 1].substr(0, 5)}
+                        </span>
+                      </p>
+                    </li>
+                  </a>
+                );
+              })
+            : showData.map((v: any, i) => {
+                return (
+                  <a href={v.link} target="_blank" className="url" key={i}>
+                    <li className="content">
+                      <div>
+                        {i + 1}: {v.title}
+                      </div>
+                      <p>
+                        마지막 업데이트: &nbsp;
+                        <span style={{ color: `red` }}>
+                          {v.time[v.time.length - 1].substr(0, 5)}
+                        </span>
+                      </p>
+                    </li>
+                  </a>
+                );
+              })}
         </ul>
       </div>
       <style jsx>{`
         .wrap {
-          background: rgb(237, 178, 231);
-          background: linear-gradient(
-            80deg,
-            rgba(237, 178, 231, 1) 0%,
-            rgb(249, 253, 228) 100%
-          );
           display: flex;
           flex-direction: column;
           justify-content: center;

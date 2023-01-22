@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background: rgb(237, 178, 231);
+  background: linear-gradient(
+    80deg,
+    rgba(237, 178, 231, 1) 0%,
+    rgb(249, 253, 228) 100%
+  );
+}
+::-webkit-scrollbar {
+  display: none; /* Chrome , Safari , Opera */
+}
