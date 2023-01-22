@@ -29,12 +29,12 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="wrap">
+    <div className="flex justify-center items-center flex-col">
       <div className="flexBox">
         <p className="subTitle"></p>
       </div>
       {data.length === 0 && <p>데이터가 없습니다</p>}
-      <div className="main">
+      <div>
         <ul>
           <div className="w-full text-center p-4">
             <p
@@ -57,7 +57,7 @@ const Home = () => {
             ? filteredData.map((v: any, i) => {
                 return (
                   <a href={v.link} target="_blank" className="url" key={i}>
-                    <li className="content">
+                    <li className="text-[1.2rem] m-4 p-4 border-black border-[1px]">
                       <div>
                         {i + 1}: {v.title}
                       </div>
@@ -74,7 +74,7 @@ const Home = () => {
             : showData.map((v: any, i) => {
                 return (
                   <a href={v.link} target="_blank" className="url" key={i}>
-                    <li className="content">
+                    <li className="text-[1.2rem] m-4 p-4 border-black border-[1px]">
                       <div>
                         {i + 1}: {v.title}
                       </div>
@@ -91,48 +91,11 @@ const Home = () => {
         </ul>
       </div>
       <style jsx>{`
-        .wrap {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        .main {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 2rem;
-        }
-        .content {
-          font-size: 1.2rem;
-          margin: 1rem;
-          border: 1px solid black;
-          padding: 1rem;
-          display: flex;
-          flex-direction: column;
-        }
         .content:hover {
           opacity: 50%;
         }
         .link:hover {
           opacity: 50%;
-        }
-        .flexBox {
-          display: flex;
-          justify-content: center;
-          flex-direction: column;
-          align-items: center;
-        }
-        .flexRow {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .subTitle:nth-of-type(2) {
-          font-size: 1.5rem;
-          color: rgb(240, 110, 132);
         }
       `}</style>
     </div>

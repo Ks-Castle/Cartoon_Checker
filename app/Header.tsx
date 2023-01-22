@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <header className="p-5 bg-blue-300 text-center">
       <p className="text-[2.5rem]">Update Checker</p>
-      <p>6시간 마다 업데이트 예정</p>
+      <p className="text-pink-700">6시간 마다 업데이트 예정</p>
       <p>
         {end} ~ {first}
       </p>
