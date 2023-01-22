@@ -24,4 +24,5 @@ def get_info():
             'time': time[i].text.split(' '),
             'link': "http://11toon61.com/" + link[i]['href']
         })
+    print('fetching data is okay')
     return arr

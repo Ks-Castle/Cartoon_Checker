@@ -15,5 +15,4 @@ if __name__ == '__main__':
             json.dump(data, product_file, ensure_ascii=False, indent=2)
             product_file.write('\n')
             inject_result_to_readme()
-    # pprint(data)
-    print('Update !')
+    print('done!')
