@@ -10,7 +10,13 @@ exports.handler = async (event) => {
       v.title.includes("원피스") ||
       v.title.includes("원펀맨") ||
       v.title.includes("피안도") ||
-      v.title.includes("켄간")
+      v.title.includes("켄간") ||
+      v.title.includes("식량인류") ||
+      v.title.includes("임금님 랭킹") ||
+      v.title.includes("스파이 패밀리") ||
+      v.title.includes("체인소맨") ||
+      v.title.includes("쿠로사와") ||
+      v.title.includes("로젠 가르텐")
     );
   });
   const dogAPI = {

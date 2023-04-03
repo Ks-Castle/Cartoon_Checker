@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "../hooks/useDebounce";
 import data from "../mockup/data.json";
 
@@ -13,7 +13,13 @@ const Home = () => {
       v.title.includes("원피스") ||
       v.title.includes("원펀맨") ||
       v.title.includes("피안도") ||
-      v.title.includes("켄간")
+      v.title.includes("켄간") ||
+      v.title.includes("식량인류") ||
+      v.title.includes("임금님 랭킹") ||
+      v.title.includes("스파이 패밀리") ||
+      v.title.includes("체인소맨") ||
+      v.title.includes("쿠로사와") ||
+      v.title.includes("로젠 가르텐")
     );
   });
 
@@ -71,7 +77,7 @@ const Home = () => {
                   </a>
                 );
               })
-            : showData.map((v: any, i) => {
+            : showData?.map((v: any, i) => {
                 return (
                   <a href={v.link} target="_blank" className="url" key={i}>
                     <li className="text-[1.2rem] m-4 p-4 border-black border-[1px]">
