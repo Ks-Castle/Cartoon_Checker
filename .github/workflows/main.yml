@@ -44,4 +44,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
           message: >
-            🎉 chore: update draws for ${{ env.DATE }}
+            🎉 Updated date: ${{ env.DATE }}
