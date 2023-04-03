@@ -40,3 +40,5 @@ package-lock.json
 yarn.lock
 .env
 discordBot.zip
+
+.history/*
