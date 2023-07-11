@@ -10,7 +10,7 @@ def get_info():
         "Accept": "text_html,application_xhtml+xml,application_xml;q=0.9,image_webp,**/**;q=0.8"
     }
     for page_number in range(1, 21):
-        URL = "http://11toon61.com/bbs/board.php?bo_table=toon_c&is=0&sord=0&type=upd&page=" + str(page_number)
+        URL = "https://11toon61.com/bbs/board.php?bo_table=toon_c&is=0&sord=0&type=upd&page=" + str(page_number)
         response = requests.get(URL, headers=headers)
         whole_source = whole_source + response.text
         soup = bs4.BeautifulSoup(whole_source, 'html.parser')
