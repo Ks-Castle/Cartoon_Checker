@@ -11,7 +11,7 @@ def get_info():
     }
     for page_number in range(1, 21):
         URL = "https://11toon61.com/bbs/board.php?bo_table=toon_c&is=0&sord=0&type=upd&page=" + str(page_number)
-        response = requests.get(URL, headers=headers)
+        response = requests.get(URL, headers=headers, verify=False)
         whole_source = whole_source + response.text
         soup = bs4.BeautifulSoup(whole_source, 'html.parser')
         title = soup.select("#free-genre-list > li > a > div.homelist-title > span")
@@ -22,7 +22,7 @@ def get_info():
             arr.append({
             'title': title[i].text,
             'time': time[i].text.split(' '),
-            'link': "http://11toon61.com/" + link[i]['href']
+            'link': "https://11toon61.com/" + link[i]['href']
         })
     print('fetching data is okay')
     return arr
